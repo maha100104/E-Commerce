@@ -30,10 +30,20 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Debug OIDC claims
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const token = await core.getIDToken('sts.amazonaws.com')
+            const payload = JSON.parse(Buffer.from(token.split('.')[1], 'base64url').toString())
+            console.log('OIDC issuer:', payload.iss)
+            console.log('OIDC audience:', payload.aud)
+            console.log('OIDC subject:', payload.sub)
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::YOUR_ACCOUNT_ID:role/GitHubActions-ECommerce-Deploy
+          role-to-assume: arn:aws:iam::835597620569:role/GitHubActions-ECommerce-Deploy
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Log in to Amazon ECR
