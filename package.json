@@ -1,4 +1,8 @@
 {
+	"scripts": {
+		"dev": "pnpm --filter frontend dev",
+		"start:dev": "pnpm --filter backend start:dev"
+	},
 	"dependencies": {
 		"bcrypt": "^6.0.0"
 	},

@@ -1,2 +1,6 @@
+packages:
+  - '.'
 onlyBuiltDependencies:
   - bcrypt
+  - esbuild
+  - unrs-resolver
