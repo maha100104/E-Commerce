@@ -9,7 +9,7 @@
   "containerDefinitions": [
     {
       "name": "ecommerce-backend",
-      "image": "<AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/ecommerce-backend:latest",
+      "image": "835597620569.dkr.ecr.us-east-1.amazonaws.com/ecommerce-backend:latest",
       "essential": true,
       "portMappings": [
         {
@@ -31,23 +31,23 @@
       "secrets": [
         {
           "name": "DB_HOST",
-          "valueFrom": "arn:aws:ssm:us-east-1:<AWS_ACCOUNT_ID>:parameter/ecommerce/DB_HOST"
+          "valueFrom": "arn:aws:ssm:us-east-1:835597620569:parameter/ecommerce/DB_HOST"
         },
         {
           "name": "DB_USER",
-          "valueFrom": "arn:aws:ssm:us-east-1:<AWS_ACCOUNT_ID>:parameter/ecommerce/DB_USER"
+          "valueFrom": "arn:aws:ssm:us-east-1:835597620569:parameter/ecommerce/DB_USER"
         },
         {
           "name": "DB_PASSWORD",
-          "valueFrom": "arn:aws:ssm:us-east-1:<AWS_ACCOUNT_ID>:parameter/ecommerce/DB_PASSWORD"
+          "valueFrom": "arn:aws:ssm:us-east-1:835597620569:parameter/ecommerce/DB_PASSWORD"
         },
         {
           "name": "DB_NAME",
-          "valueFrom": "arn:aws:ssm:us-east-1:<AWS_ACCOUNT_ID>:parameter/ecommerce/DB_NAME"
+          "valueFrom": "arn:aws:ssm:us-east-1:835597620569:parameter/ecommerce/DB_NAME"
         },
         {
           "name": "JWT_SECRET",
-          "valueFrom": "arn:aws:ssm:us-east-1:<AWS_ACCOUNT_ID>:parameter/ecommerce/JWT_SECRET"
+          "valueFrom": "arn:aws:ssm:us-east-1:835597620569:parameter/ecommerce/JWT_SECRET"
         }
       ],
       "logConfiguration": {
