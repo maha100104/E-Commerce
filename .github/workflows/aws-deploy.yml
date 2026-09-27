@@ -12,7 +12,7 @@ env:
   ECR_REPOSITORY_BACKEND: ecommerce-backend
   ECR_REPOSITORY_FRONTEND: ecommerce-frontend
   ECS_SERVICE_BACKEND: ecommerce-backend-task-service-zml2q6me
-  ECS_SERVICE_FRONTEND: ecommerce-frontend-service
+  ECS_SERVICE_FRONTEND: ecommerce-frontend-task-service-wolq9505
   ECS_CLUSTER: ecommerce-cluster
   ECS_TASK_DEFINITION_BACKEND: aws/ecs-backend-task.json
   ECS_TASK_DEFINITION_FRONTEND: aws/ecs-frontend-task.json
