@@ -15,6 +15,10 @@ RUN pnpm install
 # Copy source code
 COPY . .
 
+# Accept build-time API URL argument for Vite
+ARG VITE_API_URL
+ENV VITE_API_URL=$VITE_API_URL
+
 # Build React static assets
 RUN pnpm run build
 
