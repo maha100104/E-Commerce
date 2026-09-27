@@ -11,7 +11,7 @@ env:
   AWS_REGION: ap-south-1
   ECR_REPOSITORY_BACKEND: ecommerce-backend
   ECR_REPOSITORY_FRONTEND: ecommerce-frontend
-  ECS_SERVICE_BACKEND: ecommerce-backend-service
+  ECS_SERVICE_BACKEND: ecommerce-backend-task-service-zml2q6me
   ECS_SERVICE_FRONTEND: ecommerce-frontend-service
   ECS_CLUSTER: ecommerce-cluster
   ECS_TASK_DEFINITION_BACKEND: aws/ecs-backend-task.json
