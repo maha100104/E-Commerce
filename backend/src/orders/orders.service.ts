@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, OnModuleInit } from '@nestjs/common';
 import { db } from '../db/db';
 import { orders, orderItems, addresses, users, cart, orderStatuses } from '../schema/user.schema';
 import { eq, and, ne } from 'drizzle-orm';
@@ -6,7 +6,27 @@ import { eq, and, ne } from 'drizzle-orm';
 type AddressRow = typeof addresses.$inferSelect;
 
 @Injectable()
-export class OrdersService {
+export class OrdersService implements OnModuleInit {
+  async onModuleInit() {
+    try {
+      const existing = await db.select().from(orderStatuses);
+      if (existing.length === 0) {
+        console.log('Seeding order_statuses table...');
+        await db.insert(orderStatuses).values([
+          { key: 'ordered', label: 'Ordered', color: '#3b82f6', isStep: true, stepOrder: 1 },
+          { key: 'processing', label: 'Processing', color: '#f59e0b', isStep: true, stepOrder: 2 },
+          { key: 'shipped', label: 'Shipped', color: '#8b5cf6', isStep: true, stepOrder: 3 },
+          { key: 'out_for_delivery', label: 'Out for Delivery', color: '#eab308', isStep: true, stepOrder: 4 },
+          { key: 'delivered', label: 'Delivered', color: '#10b981', isStep: true, stepOrder: 5 },
+          { key: 'rejected', label: 'Rejected / Cancelled', color: '#ef4444', isStep: false, stepOrder: null },
+        ]);
+        console.log('order_statuses table seeded successfully.');
+      }
+    } catch (error) {
+      console.error('Error seeding order_statuses:', error);
+    }
+  }
+
   async getStatuses() {
     return db.select().from(orderStatuses);
   }
